@@ -827,10 +827,10 @@ function library:init()
                     local hover = hoverObj == v.Object;
                     if hover and not v.Hover then
                         v.Hover = true;
-                        --v.MouseEnter:Fire(inputservice:GetMouseLocation());
+                        v.MouseEnter:Fire(inputservice:GetMouseLocation());
                     elseif not hover and v.Hover then
                         v.Hover = false;
-                        --v.MouseLeave:Fire(inputservice:GetMouseLocation());
+                        v.MouseLeave:Fire(inputservice:GetMouseLocation());
                     end
                 end
 
