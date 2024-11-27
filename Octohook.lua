@@ -67,7 +67,7 @@ local library = {
         ['fps'] = 0;
         ['ping'] = 0;
     };
-    Font = Drawing.Fonts.UI;
+    Font = Drawing.Fonts.Monospace; --// Monospace, UI, System, Plex
     images = {
         ['gradientp90'] = 'https://raw.githubusercontent.com/portallol/luna/main/modules/gradient90.png';
         ['gradientp45'] = 'https://raw.githubusercontent.com/portallol/luna/main/modules/gradient45.png';
@@ -4584,12 +4584,6 @@ function library:init()
     
     -- Watermark
     do
-        if not IonHub_User then
-            getgenv().IonHub_User = {
-                UID = 0, 
-                User = "admin"
-            }
-        end
         self.watermark = {
             objects = {};
             text = {
