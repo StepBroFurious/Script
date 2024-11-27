@@ -67,7 +67,7 @@ local library = {
         ['fps'] = 0;
         ['ping'] = 0;
     };
-    Font = Drawing.Fonts.Monospace;
+    Font = Drawing.Fonts.UI;
     images = {
         ['gradientp90'] = 'https://raw.githubusercontent.com/portallol/luna/main/modules/gradient90.png';
         ['gradientp45'] = 'https://raw.githubusercontent.com/portallol/luna/main/modules/gradient45.png';
