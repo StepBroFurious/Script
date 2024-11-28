@@ -36,11 +36,7 @@ local floor, ceil, huge, pi, clamp = math.floor, math.ceil, math.huge, math.pi, 
 local c3new, fromrgb, fromhsv = Color3.new, Color3.fromRGB, Color3.fromHSV
 local next, newInstance, newUDim2, newVector2 = next, Instance.new, UDim2.new, Vector2.new
 local isexecutorclosure = isexecutorclosure or is_synapse_function or is_sirhurt_closure or iskrnlclosure;
-local executor = (
-    syn and 'syn' or
-    getexecutorname and getexecutorname() or
-    'unknown'
-)
+local executor = identifyexecutor and identifyexecutor() or "Unknown"
 
 local library = {
     windows = {};
@@ -92,7 +88,7 @@ library.themes = {
     {
         name = 'Default',
         theme = {
-            ['Accent']                    = fromrgb(255,0,0);
+            ['Accent']                    = fromrgb(255,135,255);
             ['Background']                = fromrgb(18,18,18);
             ['Border']                    = fromrgb(0,0,0);
             ['Border 1']                  = fromrgb(60,60,60);
