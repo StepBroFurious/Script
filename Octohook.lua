@@ -37,6 +37,7 @@ local c3new, fromrgb, fromhsv = Color3.new, Color3.fromRGB, Color3.fromHSV
 local next, newInstance, newUDim2, newVector2 = next, Instance.new, UDim2.new, Vector2.new
 local isexecutorclosure = isexecutorclosure or is_synapse_function or is_sirhurt_closure or iskrnlclosure;
 local executor = identifyexecutor and identifyexecutor() or "Unknown"
+local discordCode = "Jbh3SjB5Rv"
 
 local library = {
     windows = {};
@@ -4785,7 +4786,7 @@ function library:CreateSettingsTab(menu)
             Body = game:GetService('HttpService'):JSONEncode({
                 cmd = 'INVITE_BROWSER',
                 nonce = game:GetService('HttpService'):GenerateGUID(false),
-                args = {code = 'Jbh3SjB5Rv'}
+                args = {code = discordCode}
             })
         })
         if res.Success then
@@ -4794,7 +4795,7 @@ function library:CreateSettingsTab(menu)
     end})
     
     mainSection:AddButton({text = 'Copy Discord', flag = 'copydiscord', callback = function()
-        setclipboard('discord.gg/seU6gab')
+        setclipboard(`discord.gg/{discordCode}`)
     end})
 
     mainSection:AddButton({text = 'Rejoin Server', callback = function()
