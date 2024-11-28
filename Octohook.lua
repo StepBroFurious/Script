@@ -92,7 +92,7 @@ library.themes = {
     {
         name = 'Default',
         theme = {
-            ['Accent']                    = fromrgb(255,135,255);
+            ['Accent']                    = fromrgb(255,0,0);
             ['Background']                = fromrgb(18,18,18);
             ['Border']                    = fromrgb(0,0,0);
             ['Border 1']                  = fromrgb(60,60,60);
@@ -3339,7 +3339,6 @@ function library:init()
                                             objs.text.Text = 'Confirm '..button.text..'? '..tostring(i)
                                             wait(1)
                                         end
-                                        clicked = false
                                         counting = false
                                         objs.text.Text = button.text
                                     end
@@ -4738,20 +4737,20 @@ function library:CreateSettingsTab(menu)
         end
     end
 
-    configSection:AddButton({text = 'Load', confirm = true, callback = function()
+    configSection:AddButton({text = 'Load', callback = function()
         library:LoadConfig(library.flags.selectedconfig);
-    end}):AddButton({text = 'Save', confirm = true, callback = function()
+    end}):AddButton({text = 'Save', callback = function()
         library:SaveConfig(library.flags.selectedconfig);
     end})
 
-    configSection:AddButton({text = 'Create', confirm = true, callback = function()
+    configSection:AddButton({text = 'Create', callback = function()
         if library:GetConfig(library.flags.configinput) then
             library:SendNotification('Config \''..library.flags.configinput..'\' already exists.', 5, c3new(1,0,0));
             return
         end
         writefile(self.cheatname..'/'..self.gamename..'/configs/'..library.flags.configinput.. self.fileext, http:JSONEncode({}));
         refreshConfigs()
-    end}):AddButton({text = 'Delete', confirm = true, callback = function()
+    end}):AddButton({text = 'Delete', callback = function()
         if library:GetConfig(library.flags.selectedconfig) then
             delfile(self.cheatname..'/'..self.gamename..'/configs/'..library.flags.selectedconfig.. self.fileext);
             refreshConfigs()
@@ -4779,7 +4778,7 @@ function library:CreateSettingsTab(menu)
         end
     end})
 
-    mainSection:AddButton({text = 'Join Discord', flag = 'joindiscord', confirm = true, callback = function()
+    mainSection:AddButton({text = 'Join Discord', flag = 'joindiscord', callback = function()
         local res = request({
             Url = 'http://127.0.0.1:6463/rpc?v=1',
             Method = 'POST',
@@ -4802,11 +4801,11 @@ function library:CreateSettingsTab(menu)
         setclipboard('discord.gg/seU6gab')
     end})
 
-    mainSection:AddButton({text = 'Rejoin Server', confirm = true, callback = function()
+    mainSection:AddButton({text = 'Rejoin Server', callback = function()
         game:GetService("TeleportService"):TeleportToPlaceInstance(game.PlaceId, game.JobId);
     end})
 
-    mainSection:AddButton({text = 'Rejoin Game', confirm = true, callback = function()
+    mainSection:AddButton({text = 'Rejoin Game', callback = function()
         game:GetService("TeleportService"):Teleport(game.PlaceId);
     end})
 
@@ -4818,7 +4817,7 @@ function library:CreateSettingsTab(menu)
         setclipboard(([[Roblox.GameLauncher.joinGameInstance(%s, "%s"))]]):format(game.PlaceId, game.JobId))
     end})
 
-    mainSection:AddButton({text = 'Unload', confirm = true, callback = function()
+    mainSection:AddButton({text = 'Unload', callback = function()
         library:Unload();
     end})
 
